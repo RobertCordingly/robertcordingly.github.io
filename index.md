@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+# Robert Cordingly
 
-You can use the [editor on GitHub](https://github.com/RobertCordingly/robertcordingly.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+## Publications
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Cordingly, R., Lloyd, W., FaaSET: A Jupyter notebook to streamline every facet of serverless development, 2022 13th ACM/SPEC International Conference on Performance Engineering: 5th Workshop on Hot Topics in Cloud Computing Performance (HotCloudPerf-2022), Apr 9, 2022.
 
-### Markdown
+Lambion, D., Schmitz, R., Cordingly, R., Heydari, N., Lloyd, W., Characterizing X86 and ARM Serverless Performance Variation: A Natural Language Processing Case Study, 2022 13th ACM/SPEC International Conference on Performance Engineering: 5th Workshop on Hot Topics in Cloud Computing Performance (HotCloudPerf-2022), Apr 9, 2022.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Quinn, S., Cordingly, R., Lloyd, W., Implications of Alternative Serverless Application Control Flow Methods, 2021 22nd ACM/IFIP International Middleware Conference: 7th International Workshop on Serverless Computing (WoSC '21), Dec 6-10, 2021.
 
-```markdown
-Syntax highlighted code block
+Cordingly, R., Heydari, N., Yu, H., Hoang, V., Sadeghi, Z., Lloyd, W., Enhancing Observability of Serverless Computing with the Serverless Application Analytics Framework, Tutorial Paper. 2021 12th ACM/SPEC International Conference on Performance Engineering (ICPE '21), Apr 19-23, 2021.
 
-# Header 1
-## Header 2
-### Header 3
+Cordingly, R., Yu, H., Hoang, V., Sadeghi, Z., Foster, D., Perez, D., Hatchett, R., Lloyd, W., The Serverless Application Analytics Framework: Enabling Design Trade-off Evaluation for Serverless Software, 2020 21st ACM/IFIP International Middleware Conference: 6th International Workshop on Serverless Computing (WoSC '20), Dec 7-11, 2020.
 
-- Bulleted
-- List
+Cordingly, R., Shu, W., Lloyd, W., Predicting Performance and Cost of Serverless Computing Functions with SAAF, 2020 6th IEEE International Conference on Cloud and Big Data Computing (CBDCOM 2020), Aug 17-24, 2020. Acceptance Rate 27%
 
-1. Numbered
-2. List
+Cordingly, R., Yu, H., Hoang, V., Perez, D., Foster, D., Sadeghi, Z., Hatchett, R., Lloyd, W., Implications of Programming Language Selection for Serverless Data Processing Pipelines, 2020 6th IEEE International Conference on Cloud and Big Data Computing (CBDCOM 2020), Aug 17-24, 2020. Acceptance Rate 40% (short paper)
 
-**Bold** and _Italic_ and `Code` text
+## Masters Thesis
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RobertCordingly/robertcordingly.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Cordingly R. Serverless Performance Modeling with CPU Time Accounting and the Serverless Application Analytics Framework (Masters thesis, University of Washington).
