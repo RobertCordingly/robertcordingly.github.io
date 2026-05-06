@@ -197,6 +197,17 @@
     .badge.best { background: var(--gold); color: #3b2f12; }
     .badge.rate { background: var(--accent-soft); color: var(--accent-strong); }
     .badge.first { background: #eef5ee; color: #2d5a32; }
+    .badge.type { background: #f3f0ea; color: #4d4434; }
+    .badge.length { background: #eef2f7; color: #2c4663; }
+
+    /* Publication tags row */
+    .pub-tags {
+      margin-top: .5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+    .pub-tags .badge { margin-left: 0; }
 
     /* Publication link buttons */
     .pub-links {
@@ -231,6 +242,125 @@
       font-weight: 600;
     }
     .pub-links a.primary:hover { background: var(--accent); color: #fff; }
+    .pub-links button.cite-btn {
+      font-family: "Inter", sans-serif;
+      font-size: .78rem;
+      letter-spacing: 0.02em;
+      padding: .2rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color .15s, color .15s, background .15s, transform .15s;
+    }
+    .pub-links button.cite-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+    .pub-links a .cite-count {
+      font-weight: 600;
+      margin-left: .25rem;
+    }
+
+    /* Cite modal */
+    .cite-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 16, 30, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+      backdrop-filter: blur(2px);
+    }
+    .cite-modal.open { display: flex; }
+    .cite-modal-content {
+      background: var(--surface);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 640px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+    }
+    .cite-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .9rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cite-modal-header h3 {
+      margin: 0;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .cite-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-faint);
+      cursor: pointer;
+      padding: .2rem .5rem;
+      border-radius: 4px;
+    }
+    .cite-modal-close:hover { color: var(--text); background: var(--accent-soft); }
+    .cite-modal-body { padding: 1.1rem 1.25rem 1.25rem; }
+    .cite-modal-body pre {
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+      font-size: .85rem;
+      line-height: 1.5;
+      background: #f7f5f1;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      margin: 0 0 .85rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 60vh;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    .cite-modal-actions {
+      display: flex;
+      gap: .5rem;
+      justify-content: flex-end;
+    }
+    .cite-modal-actions button {
+      font-family: "Inter", sans-serif;
+      font-size: .82rem;
+      padding: .45rem .9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .cite-modal-actions button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .cite-modal-actions button:hover { border-color: var(--accent); color: var(--accent); }
+    .cite-modal-actions button.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+    .cite-modal-actions .copy-status {
+      font-size: .8rem;
+      color: #2d5a32;
+      align-self: center;
+      margin-right: auto;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .cite-modal-actions .copy-status.show { opacity: 1; }
 
     /* Awards / Education */
     .list-block { display: grid; gap: .55rem; font-family: "Inter", sans-serif; font-size: .95rem; }
@@ -374,199 +504,311 @@
 
       <div class="pub-year">2025</div>
 
-      <div class="pub">
+      <div class="pub" id="pub-llm25">
         <span class="title">Large Language Models for Serverless Function Generation: An Investigation on FaaS Performance</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">11th International Workshop on Serverless Computing (WOSC&nbsp;2025) — Dec&nbsp;2025</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/WoSC11_2025_ServerlessLLM.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="https://scholar.google.com/scholar?q=Large+Language+Models+for+Serverless+Function+Generation+An+Investigation+on+FaaS+Performance" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="chen2025llm">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Sky Computing for Serverless: Infrastructure Assessment to Support Performance Enhancement <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-sky25">
+        <span class="title">Sky Computing for Serverless: Infrastructure Assessment to Support Performance Enhancement</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Chen, X., Hung, L.H., Lloyd, W.</span>
-        <span class="venue">18th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2025) — Dec&nbsp;2025 <span class="badge rate">Acc. 31%</span></span>
+        <span class="venue">18th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2025) — Dec&nbsp;2025</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">10 pages</span>
+          <span class="badge rate">Acc. 31%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/Cordingly_CPU_Distribution_Manipulation_UCC2025-cr.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="https://dl.acm.org/doi/10.1145/3773274.3774266" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=Sky+Computing+for+Serverless+Infrastructure+Assessment+to+Support+Performance+Enhancement" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2025sky">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-distfaas25">
         <span class="title">Distributed FaaSRunner: Enabling Reproducible Multi-node, Multi-threaded Function-as-a-Service Endpoint Testing</span>
         <span class="authors">Kondo, T., Bomhold, A., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
-        <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025 <span class="badge rate">Acc. 40.8%</span></span>
+        <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025</span>
+        <div class="pub-tags">
+          <span class="badge type">Short Paper</span>
+          <span class="badge rate">Acc. 40.8%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/DistFaaSRunner-camera-ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/DistributedFaaSRunnerIC2ESlides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://ieeexplore.ieee.org/document/11196324/" target="_blank" rel="noopener">IEEE Xplore</a>
+          <a href="https://scholar.google.com/scholar?q=Distributed+FaaSRunner+Enabling+Reproducible+Multi-node+Multi-threaded+Function-as-a-Service+Endpoint+Testing" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="kondo2025faasrunner">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-graphqldb25">
         <span class="title">GraphQL vs. REST: Investigating Performance and Scalability for Serverless Database Abstraction</span>
         <span class="authors">Jin, R., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
-        <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025 <span class="badge rate">Acc. 40.8%</span></span>
+        <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025</span>
+        <div class="pub-tags">
+          <span class="badge type">Short Paper</span>
+          <span class="badge rate">Acc. 40.8%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/graphql-camera-ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/graphql-ic2e-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=GraphQL+vs+REST+Investigating+Performance+and+Scalability+for+Serverless+Database+Abstraction" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="jin2025graphqldb">Cite</button>
         </div>
       </div>
 
       <div class="pub-year">2024</div>
 
-      <div class="pub">
+      <div class="pub" id="pub-arm24">
         <span class="title">Predicting ARM64 Serverless Function Runtime: Leveraging Function Profiling for Generalized Performance Models</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
-        <span class="venue">17th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2024) — Dec&nbsp;2024 <span class="badge rate">Acc. 35%</span></span>
+        <span class="venue">17th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2024) — Dec&nbsp;2024</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge length">10 pages</span>
+          <span class="badge rate">Acc. 35%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/ucc-2024-camera-ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/ucc-2024-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=Predicting+ARM64+Serverless+Function+Runtime+Leveraging+Function+Profiling+Generalized+Performance+Models" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="chen2024arm">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-graphql24">
         <span class="title">GraphQL vs. REST: A Performance and Cost Investigation for Serverless Applications</span>
         <span class="authors">Jin, R., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
         <span class="venue">10th International Workshop on Serverless Computing (WOSC&nbsp;2024) — Dec&nbsp;2024</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/wosc2024-final73.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/wosc2024-slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://dl.acm.org/doi/10.1145/3702634.3702956" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=GraphQL+vs+REST+A+Performance+and+Cost+Investigation+for+Serverless+Applications" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="jin2024graphql">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Towards Low-Cost Global Highly Available Large Container-Based Serverless Functions <span class="badge best">Best Paper</span></span>
+      <div class="pub" id="pub-summit24">
+        <span class="title">Towards Low-Cost Global Highly Available Large Container-Based Serverless Functions</span>
         <span class="authors">Kaur, J., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">2024 IEEE Cloud Summit, pp.&nbsp;7–12 — Jun&nbsp;2024</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge length">6 pages</span>
+          <span class="badge best">Best Paper</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/IEEECloudSummit_JasleenKaur-cameraready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/2024-cloud-summit-slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://ieeexplore.ieee.org/document/10630900/" target="_blank" rel="noopener">IEEE Xplore</a>
+          <a href="https://scholar.google.com/scholar?q=Towards+Low-Cost+Global+Highly+Available+Large+Container-Based+Serverless+Functions" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="kaur2024container">Cite</button>
         </div>
       </div>
 
       <div class="pub-year">2023</div>
 
-      <div class="pub">
-        <span class="title">Towards Serverless Sky Computing: An Investigation on Global Workload Distribution to Mitigate Carbon Intensity, Network Latency, and Cost <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-skyic2e23">
+        <span class="title">Towards Serverless Sky Computing: An Investigation on Global Workload Distribution to Mitigate Carbon Intensity, Network Latency, and Cost</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Kaur, J., Dwivedi, D., Lloyd, W.</span>
-        <span class="venue">2023 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2023), pp.&nbsp;59–69 — Sep&nbsp;2023 <span class="badge rate">Acc. 33.3%</span></span>
+        <span class="venue">2023 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2023), pp.&nbsp;59–69 — Sep&nbsp;2023</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">11 pages</span>
+          <span class="badge rate">Acc. 33.3%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/ic2e_2023_cordingly.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/Cordingly_IC2E2023_slides_2up.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=Towards+Serverless+Sky+Computing+An+Investigation+on+Global+Workload+Distribution+Carbon+Intensity" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2023sky">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Enabling Serverless Sky Computing <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-skyphd23">
+        <span class="title">Enabling Serverless Sky Computing</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">2023 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2023), PhD Symposium, pp.&nbsp;232–235 — Sep&nbsp;2023</span>
+        <div class="pub-tags">
+          <span class="badge type">PhD Symposium</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">4 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/ic2e_2023_PhD_Sym.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/cordingly_ic2e_2023_PhD_Sym-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=Enabling+Serverless+Sky+Computing+Cordingly+Lloyd" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2023phdsky">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-vendor23">
         <span class="title">Addressing Serverless Computing Vendor Lock-In through Cloud Service Abstraction</span>
         <span class="authors">Mo, D., <strong>Cordingly, R.</strong>, Chinn, D., Lloyd, W.</span>
         <span class="venue">2023 IEEE International Conference on Cloud Computing Technology and Science (CloudCom&nbsp;2023), pp.&nbsp;193–199 — Dec&nbsp;2023</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge length">7 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/MoCloudCom2023proof.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/cloudcom-2023.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=Addressing+Serverless+Computing+Vendor+Lock-In+through+Cloud+Service+Abstraction" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="mo2023vendor">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-x86arm23">
         <span class="title">X86 vs. ARM64: An Investigation of Factors Influencing Serverless Performance</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">9th International Workshop on Serverless Computing (WOSC&nbsp;2023) — Dec&nbsp;2023</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/XinghanChen_WOSC2023_paper_camera_ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/wosc_2023_slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://dl.acm.org/doi/10.1145/3631295.3631394" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=X86+vs+ARM64+An+Investigation+of+Factors+Influencing+Serverless+Performance" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="chen2023x86arm">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-container23">
         <span class="title">Understanding Container Isolation: An Investigation of Performance Implications of Container Runtimes</span>
         <span class="authors">Bhaia, N., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">9th International Workshop on Container Technologies and Container Clouds (WoC&nbsp;2023), pp.&nbsp;7–12 — Dec&nbsp;2023</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+          <span class="badge length">6 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/Bhaia_ContainerIsolationPaper-cameraready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/WoC-2023-slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://dl.acm.org/doi/10.1145/3631311.3632400" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=Understanding+Container+Isolation+Performance+Implications+Container+Runtimes" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="bhaia2023container">Cite</button>
         </div>
       </div>
 
       <div class="pub-year">2022</div>
 
-      <div class="pub">
-        <span class="title">Function Memory Optimization for Heterogeneous Serverless Platforms with CPU Time Accounting <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-mem22">
+        <span class="title">Function Memory Optimization for Heterogeneous Serverless Platforms with CPU Time Accounting</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Xu, S., Lloyd, W.</span>
         <span class="venue">2022 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2022) — Sep&nbsp;2022</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge first">First author</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/SAAF_Memory_Configuration_IC2E2022.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/ic2e2022_CPUTAMS_slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://scholar.google.com/scholar?q=Function+Memory+Optimization+for+Heterogeneous+Serverless+Platforms+with+CPU+Time+Accounting" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2022memory">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">FaaSET: A Jupyter Notebook to Streamline Every Facet of Serverless Development <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-faaset22">
+        <span class="title">FaaSET: A Jupyter Notebook to Streamline Every Facet of Serverless Development</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">5th Workshop on Hot Topics in Cloud Computing Performance (HotCloudPerf&nbsp;2022), co-located with ICPE&nbsp;2022 — Apr&nbsp;2022</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+          <span class="badge first">First author</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/FaaSET-paper-final.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/HotCloudPerf_2022_FaaSET-notebook-slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://youtu.be/VEF3i_XNGy0?t=8053" target="_blank" rel="noopener">Video</a>
+          <a href="https://scholar.google.com/scholar?q=FaaSET+A+Jupyter+notebook+to+streamline+every+facet+of+serverless+development" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2022faaset">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub" id="pub-variability22">
         <span class="title">Characterizing X86 and ARM Serverless Performance Variation: A Natural Language Processing Case Study</span>
         <span class="authors">Lambion, D., Schmitz, R., <strong>Cordingly, R.</strong>, Heydari, N., Lloyd, W.</span>
         <span class="venue">Companion of the 2022 ACM/SPEC International Conference on Performance Engineering (ICPE&nbsp;2022), pp.&nbsp;69–75 — Jul&nbsp;2022</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+          <span class="badge length">7 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/hotcloudperf_lambda_variability_final.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/hotcloudperf_lambda_variability_slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://youtu.be/VEF3i_XNGy0?t=11356" target="_blank" rel="noopener">Video</a>
+          <a href="https://scholar.google.com/scholar?q=Characterizing+X86+and+ARM+Serverless+Performance+Variation+Natural+Language+Processing+Case+Study" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="lambion2022variability">Cite</button>
         </div>
       </div>
 
       <div class="pub-year">2021</div>
 
-      <div class="pub">
+      <div class="pub" id="pub-ctrlflow21">
         <span class="title">Implications of Alternative Serverless Application Control Flow Methods</span>
         <span class="authors">Quinn, S., <strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">7th International Workshop on Serverless Computing (WoSC&nbsp;2021), pp.&nbsp;17–22 — Dec&nbsp;2021</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+          <span class="badge length">6 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/SterlingQuinn.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/WOSC7-slides-p3.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://www.youtube.com/watch?v=Xt0ltISAXJY" target="_blank" rel="noopener">Video</a>
           <a href="https://dl.acm.org/doi/abs/10.1145/3493651.3493668" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=Implications+of+Alternative+Serverless+Application+Control+Flow+Methods" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="quinn2021ctrlflow">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Enhancing Observability of Serverless Computing with the Serverless Application Analytics Framework <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-saaftut21">
+        <span class="title">Enhancing Observability of Serverless Computing with the Serverless Application Analytics Framework</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Heydari, N., Yu, H., Hoang, V., Sadeghi, Z., Lloyd, W.</span>
-        <span class="venue">Companion of the ACM/SPEC International Conference on Performance Engineering (ICPE&nbsp;2021), Tutorial Paper, pp.&nbsp;161–164 — Apr&nbsp;2021</span>
+        <span class="venue">Companion of the ACM/SPEC International Conference on Performance Engineering (ICPE&nbsp;2021), pp.&nbsp;161–164 — Apr&nbsp;2021</span>
+        <div class="pub-tags">
+          <span class="badge type">Tutorial Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">4 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/ICPE_SAAF_proof.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/SAAF_Tutorial_Slides.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://github.com/wlloyduw/SAAF/blob/master/tutorial" target="_blank" rel="noopener">Tutorial</a>
+          <a href="https://scholar.google.com/scholar?q=Enhancing+Observability+of+Serverless+Computing+with+the+Serverless+Application+Analytics+Framework" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2021saaftut">Cite</button>
         </div>
       </div>
 
       <div class="pub-year">2020</div>
 
-      <div class="pub">
-        <span class="title">The Serverless Application Analytics Framework: Enabling Design Trade-off Evaluation for Serverless Software <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-saaf20">
+        <span class="title">The Serverless Application Analytics Framework: Enabling Design Trade-off Evaluation for Serverless Software</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Yu, H., Hoang, V., Sadeghi, Z., Foster, D., Perez, D., Hatchett, R., Lloyd, W.</span>
         <span class="venue">6th International Workshop on Serverless Computing (WoSC&nbsp;2020), pp.&nbsp;67–72 — Dec&nbsp;2020</span>
+        <div class="pub-tags">
+          <span class="badge type">Workshop Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">6 pages</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/SAAF-Paper24.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/SAAF-WOSC-slides.pdf" target="_blank" rel="noopener">Slides</a>
@@ -574,30 +816,48 @@
           <a href="https://youtu.be/479BnWGp2E4" target="_blank" rel="noopener">Demo</a>
           <a href="https://youtu.be/i_s91P72pRE" target="_blank" rel="noopener">Lightning</a>
           <a href="https://dl.acm.org/doi/abs/10.1145/3429880.3430103" target="_blank" rel="noopener">ACM DL</a>
+          <a href="https://scholar.google.com/scholar?q=The+Serverless+Application+Analytics+Framework+Enabling+Design+Trade-off+Evaluation+for+Serverless+Software" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2020saaf">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Predicting Performance and Cost of Serverless Computing Functions with SAAF <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-predict20">
+        <span class="title">Predicting Performance and Cost of Serverless Computing Functions with SAAF</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Shu, W., Lloyd, W.J.</span>
-        <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, pp.&nbsp;640–649 — Aug&nbsp;2020 <span class="badge rate">Acc. 27%</span></span>
+        <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, pp.&nbsp;640–649 — Aug&nbsp;2020</span>
+        <div class="pub-tags">
+          <span class="badge type">Full Conference Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">10 pages</span>
+          <span class="badge rate">Acc. 27%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/saaf_cbdcom_camera_ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/SAAF_slides-2-Up.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://drive.google.com/file/d/1YrcrkpKskCltJLJ8gdEGlH_XbutAUjnW/view?usp=sharing" target="_blank" rel="noopener">Video</a>
           <a href="https://ieeexplore.ieee.org/document/9251165/" target="_blank" rel="noopener">IEEE Xplore</a>
+          <a href="https://scholar.google.com/scholar?q=Predicting+Performance+and+Cost+of+Serverless+Computing+Functions+with+SAAF" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2020predict">Cite</button>
         </div>
       </div>
 
-      <div class="pub">
-        <span class="title">Implications of Programming Language Selection for Serverless Data Processing Pipelines <span class="badge first">First author</span></span>
+      <div class="pub" id="pub-lang20">
+        <span class="title">Implications of Programming Language Selection for Serverless Data Processing Pipelines</span>
         <span class="authors"><strong>Cordingly, R.</strong>, Yu, H., Hoang, V., Perez, D., Foster, D., Sadeghi, Z., Hatchett, R., Lloyd, W.J.</span>
-        <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, Short Paper, pp.&nbsp;704–711 — Aug&nbsp;2020 <span class="badge rate">Acc. 40%</span></span>
+        <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, pp.&nbsp;704–711 — Aug&nbsp;2020</span>
+        <div class="pub-tags">
+          <span class="badge type">Short Paper</span>
+          <span class="badge first">First author</span>
+          <span class="badge length">8 pages</span>
+          <span class="badge rate">Acc. 40%</span>
+        </div>
         <div class="pub-links">
           <a class="primary" href="papers/cbdcom_FaaSProgrammingLanguagePaper_camera_ready.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="slides/Lang-slides-2-Up.pdf" target="_blank" rel="noopener">Slides</a>
           <a href="https://drive.google.com/file/d/1C1Vau613ehXrctcRSqxVrAwP2WurEG4w/view?usp=sharing" target="_blank" rel="noopener">Video</a>
           <a href="https://ieeexplore.ieee.org/document/9251194/" target="_blank" rel="noopener">IEEE Xplore</a>
+          <a href="https://scholar.google.com/scholar?q=Implications+of+Programming+Language+Selection+for+Serverless+Data+Processing+Pipelines" target="_blank" rel="noopener">Scholar</a>
+          <button type="button" class="cite-btn" data-key="cordingly2020lang">Cite</button>
         </div>
       </div>
     </section>
@@ -721,8 +981,306 @@
       <span>Last updated <span id="updated">May 2026</span></span>
     </footer>
   </main>
+
+  <!-- BibTeX citation modal -->
+  <div class="cite-modal" id="cite-modal" role="dialog" aria-modal="true" aria-labelledby="cite-modal-title">
+    <div class="cite-modal-content">
+      <div class="cite-modal-header">
+        <h3 id="cite-modal-title">BibTeX</h3>
+        <button class="cite-modal-close" id="cite-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="cite-modal-body">
+        <pre id="cite-modal-text"></pre>
+        <div class="cite-modal-actions">
+          <span class="copy-status" id="cite-copy-status">Copied!</span>
+          <button id="cite-copy-btn" class="primary" type="button">Copy</button>
+          <button id="cite-close-btn" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // BibTeX entries keyed by data-key on each Cite button
+    const BIBTEX = {
+      "chen2025llm": `@inproceedings{chen2025llm,
+  author    = {Chen, Xinghan and Cordingly, Robert and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {Large Language Models for Serverless Function Generation: An Investigation on {FaaS} Performance},
+  booktitle = {Proceedings of the 11th International Workshop on Serverless Computing (WOSC)},
+  year      = {2025},
+  month     = dec
+}`,
+      "cordingly2025sky": `@inproceedings{cordingly2025sky,
+  author    = {Cordingly, Robert and Chen, Xinghan and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {Sky Computing for Serverless: Infrastructure Assessment to Support Performance Enhancement},
+  booktitle = {Proceedings of the 18th IEEE/ACM International Conference on Utility and Cloud Computing (UCC)},
+  year      = {2025},
+  pages     = {1--10},
+  publisher = {ACM},
+  doi       = {10.1145/3773274.3774266}
+}`,
+      "kondo2025faasrunner": `@inproceedings{kondo2025faasrunner,
+  author    = {Kondo, Tomoki and Bomhold, Austin and Cordingly, Robert and Zhao, Dongfang and Lloyd, Wes},
+  title     = {Distributed {FaaSRunner}: Enabling Reproducible Multi-node, Multi-threaded Function-as-a-Service Endpoint Testing},
+  booktitle = {Proceedings of the 13th IEEE International Conference on Cloud Engineering (IC2E)},
+  year      = {2025},
+  month     = sep,
+  publisher = {IEEE}
+}`,
+      "jin2025graphqldb": `@inproceedings{jin2025graphqldb,
+  author    = {Jin, Runjie and Cordingly, Robert and Zhao, Dongfang and Lloyd, Wes},
+  title     = {{GraphQL} vs. {REST}: Investigating Performance and Scalability for Serverless Database Abstraction},
+  booktitle = {Proceedings of the 13th IEEE International Conference on Cloud Engineering (IC2E)},
+  year      = {2025},
+  month     = sep,
+  publisher = {IEEE}
+}`,
+      "chen2024arm": `@inproceedings{chen2024arm,
+  author    = {Chen, Xinghan and Cordingly, Robert and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {Predicting {ARM64} Serverless Function Runtime: Leveraging Function Profiling for Generalized Performance Models},
+  booktitle = {Proceedings of the 17th IEEE/ACM International Conference on Utility and Cloud Computing (UCC)},
+  year      = {2024},
+  pages     = {1--10},
+  month     = dec,
+  publisher = {IEEE}
+}`,
+      "jin2024graphql": `@inproceedings{jin2024graphql,
+  author    = {Jin, Runjie and Cordingly, Robert and Zhao, Dongfang and Lloyd, Wes},
+  title     = {{GraphQL} vs. {REST}: A Performance and Cost Investigation for Serverless Applications},
+  booktitle = {Proceedings of the 10th International Workshop on Serverless Computing (WOSC)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3702634.3702956}
+}`,
+      "kaur2024container": `@inproceedings{kaur2024container,
+  author    = {Kaur, Jasleen and Cordingly, Robert and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {Towards Low-Cost Global Highly Available Large Container-Based Serverless Functions},
+  booktitle = {Proceedings of the 2024 IEEE Cloud Summit},
+  year      = {2024},
+  pages     = {7--12},
+  publisher = {IEEE},
+  note      = {Best Paper Award}
+}`,
+      "cordingly2023sky": `@inproceedings{cordingly2023sky,
+  author    = {Cordingly, Robert and Kaur, Jasleen and Dwivedi, Divyansh and Lloyd, Wes},
+  title     = {Towards Serverless Sky Computing: An Investigation on Global Workload Distribution to Mitigate Carbon Intensity, Network Latency, and Cost},
+  booktitle = {Proceedings of the 2023 IEEE International Conference on Cloud Engineering (IC2E)},
+  year      = {2023},
+  pages     = {59--69},
+  publisher = {IEEE}
+}`,
+      "cordingly2023phdsky": `@inproceedings{cordingly2023phdsky,
+  author    = {Cordingly, Robert and Lloyd, Wes},
+  title     = {Enabling Serverless Sky Computing},
+  booktitle = {Proceedings of the 2023 IEEE International Conference on Cloud Engineering (IC2E), PhD Symposium},
+  year      = {2023},
+  pages     = {232--235},
+  publisher = {IEEE}
+}`,
+      "mo2023vendor": `@inproceedings{mo2023vendor,
+  author    = {Mo, Daniel and Cordingly, Robert and Chinn, Donald and Lloyd, Wes},
+  title     = {Addressing Serverless Computing Vendor Lock-In through Cloud Service Abstraction},
+  booktitle = {Proceedings of the 2023 IEEE International Conference on Cloud Computing Technology and Science (CloudCom)},
+  year      = {2023},
+  pages     = {193--199},
+  publisher = {IEEE}
+}`,
+      "chen2023x86arm": `@inproceedings{chen2023x86arm,
+  author    = {Chen, Xinghan and Cordingly, Robert and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {{X86} vs. {ARM64}: An Investigation of Factors Influencing Serverless Performance},
+  booktitle = {Proceedings of the 9th International Workshop on Serverless Computing (WOSC)},
+  year      = {2023},
+  publisher = {ACM},
+  doi       = {10.1145/3631295.3631394}
+}`,
+      "bhaia2023container": `@inproceedings{bhaia2023container,
+  author    = {Bhaia, Naman and Cordingly, Robert and Hung, Ling-Hong and Lloyd, Wes},
+  title     = {Understanding Container Isolation: An Investigation of Performance Implications of Container Runtimes},
+  booktitle = {Proceedings of the 9th International Workshop on Container Technologies and Container Clouds (WoC)},
+  year      = {2023},
+  pages     = {7--12},
+  publisher = {ACM},
+  doi       = {10.1145/3631311.3632400}
+}`,
+      "cordingly2022memory": `@inproceedings{cordingly2022memory,
+  author    = {Cordingly, Robert and Xu, Sterling and Lloyd, Wes},
+  title     = {Function Memory Optimization for Heterogeneous Serverless Platforms with {CPU} Time Accounting},
+  booktitle = {Proceedings of the 2022 IEEE International Conference on Cloud Engineering (IC2E)},
+  year      = {2022},
+  publisher = {IEEE}
+}`,
+      "cordingly2022faaset": `@inproceedings{cordingly2022faaset,
+  author    = {Cordingly, Robert and Lloyd, Wes},
+  title     = {{FaaSET}: A Jupyter Notebook to Streamline Every Facet of Serverless Development},
+  booktitle = {Companion of the 2022 ACM/SPEC International Conference on Performance Engineering (ICPE), Workshop on Hot Topics in Cloud Computing Performance (HotCloudPerf)},
+  year      = {2022},
+  publisher = {ACM}
+}`,
+      "lambion2022variability": `@inproceedings{lambion2022variability,
+  author    = {Lambion, Danielle and Schmitz, Robert and Cordingly, Robert and Heydari, Navid and Lloyd, Wes},
+  title     = {Characterizing {X86} and {ARM} Serverless Performance Variation: A Natural Language Processing Case Study},
+  booktitle = {Companion of the 2022 ACM/SPEC International Conference on Performance Engineering (ICPE)},
+  year      = {2022},
+  pages     = {69--75},
+  publisher = {ACM}
+}`,
+      "quinn2021ctrlflow": `@inproceedings{quinn2021ctrlflow,
+  author    = {Quinn, Sterling and Cordingly, Robert and Lloyd, Wes},
+  title     = {Implications of Alternative Serverless Application Control Flow Methods},
+  booktitle = {Proceedings of the 7th International Workshop on Serverless Computing (WoSC)},
+  year      = {2021},
+  pages     = {17--22},
+  publisher = {ACM},
+  doi       = {10.1145/3493651.3493668}
+}`,
+      "cordingly2021saaftut": `@inproceedings{cordingly2021saaftut,
+  author    = {Cordingly, Robert and Heydari, Navid and Yu, Hanfei and Hoang, Varik and Sadeghi, Zohreh and Lloyd, Wes},
+  title     = {Enhancing Observability of Serverless Computing with the Serverless Application Analytics Framework},
+  booktitle = {Companion of the ACM/SPEC International Conference on Performance Engineering (ICPE)},
+  year      = {2021},
+  pages     = {161--164},
+  publisher = {ACM},
+  note      = {Tutorial Paper}
+}`,
+      "cordingly2020saaf": `@inproceedings{cordingly2020saaf,
+  author    = {Cordingly, Robert and Yu, Hanfei and Hoang, Varik and Sadeghi, Zohreh and Foster, David and Perez, David and Hatchett, Rashad and Lloyd, Wes},
+  title     = {The Serverless Application Analytics Framework: Enabling Design Trade-off Evaluation for Serverless Software},
+  booktitle = {Proceedings of the 6th International Workshop on Serverless Computing (WoSC)},
+  year      = {2020},
+  pages     = {67--72},
+  publisher = {ACM},
+  doi       = {10.1145/3429880.3430103}
+}`,
+      "cordingly2020predict": `@inproceedings{cordingly2020predict,
+  author    = {Cordingly, Robert and Shu, Wen and Lloyd, Wes J.},
+  title     = {Predicting Performance and Cost of Serverless Computing Functions with {SAAF}},
+  booktitle = {2020 IEEE International Conference on Dependable, Autonomic and Secure Computing, International Conference on Pervasive Intelligence and Computing, International Conference on Cloud and Big Data Computing, International Conference on Cyber Science and Technology Congress (DASC/PiCom/CBDCom/CyberSciTech)},
+  year      = {2020},
+  pages     = {640--649},
+  publisher = {IEEE},
+  doi       = {10.1109/DASC-PICom-CBDCom-CyberSciTech49142.2020.00114}
+}`,
+      "cordingly2020lang": `@inproceedings{cordingly2020lang,
+  author    = {Cordingly, Robert and Yu, Hanfei and Hoang, Varik and Perez, David and Foster, David and Sadeghi, Zohreh and Hatchett, Rashad and Lloyd, Wes J.},
+  title     = {Implications of Programming Language Selection for Serverless Data Processing Pipelines},
+  booktitle = {2020 IEEE International Conference on Dependable, Autonomic and Secure Computing, International Conference on Pervasive Intelligence and Computing, International Conference on Cloud and Big Data Computing, International Conference on Cyber Science and Technology Congress (DASC/PiCom/CBDCom/CyberSciTech)},
+  year      = {2020},
+  pages     = {704--711},
+  publisher = {IEEE},
+  doi       = {10.1109/DASC-PICom-CBDCom-CyberSciTech49142.2020.00125}
+}`
+    };
+
+    // Citation counts and Google Scholar "Cited by" cluster URLs.
+    // Keys must match the data-key on each Cite button.
+    // Source: Robert's Google Scholar profile (last refreshed May 2026).
+    const CITATIONS = {
+      "cordingly2020predict": 81,   // 62 + 19 across two clusters
+      "cordingly2020saaf": 43,
+      "cordingly2020lang": 37,      // 30 + 7 across two clusters
+      "cordingly2022memory": 25,
+      "cordingly2021saaftut": 20,
+      "cordingly2023sky": 19,
+      "chen2023x86arm": 17,
+      "lambion2022variability": 17,
+      "quinn2021ctrlflow": 15,
+      "bhaia2023container": 9,
+      "mo2023vendor": 9,
+      "jin2024graphql": 7,
+      "cordingly2023phdsky": 4,
+      "cordingly2022faaset": 4,
+      "chen2024arm": 1,
+      "kaur2024container": 1,
+      "chen2025llm": 0
+    };
+    const SCHOLAR_CITES = {
+      "cordingly2020predict":   "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1546011370452553551",
+      "cordingly2020saaf":      "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9609501945437236683",
+      "cordingly2020lang":      "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8826777694018838539",
+      "cordingly2022memory":    "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1217810889966326653",
+      "cordingly2021saaftut":   "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1055275967892090375",
+      "cordingly2023sky":       "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5331837347894599605",
+      "chen2023x86arm":         "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13384332177126691517",
+      "lambion2022variability": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5034794240634308519",
+      "quinn2021ctrlflow":      "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13716811919118198559",
+      "bhaia2023container":     "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11739817162536409482",
+      "mo2023vendor":           "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12801296219471999598",
+      "jin2024graphql":         "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2626421986503443506",
+      "cordingly2023phdsky":    "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10599060293764233923",
+      "cordingly2022faaset":    "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16396590269356396503",
+      "chen2024arm":            "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9289707398315926774",
+      "kaur2024container":      "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3406542480756546225"
+    };
+
+    // Modal handlers
+    const modal = document.getElementById("cite-modal");
+    const modalText = document.getElementById("cite-modal-text");
+    const copyStatus = document.getElementById("cite-copy-status");
+
+    function openCiteModal(key) {
+      const bib = BIBTEX[key];
+      if (!bib) {
+        console.warn("No BibTeX for key:", key);
+        return;
+      }
+      modalText.textContent = bib;
+      modal.classList.add("open");
+      copyStatus.classList.remove("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCiteModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".cite-btn");
+      if (btn) {
+        e.preventDefault();
+        openCiteModal(btn.dataset.key);
+      }
+    });
+
+    document.getElementById("cite-modal-close").addEventListener("click", closeCiteModal);
+    document.getElementById("cite-close-btn").addEventListener("click", closeCiteModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeCiteModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("open")) closeCiteModal(); });
+
+    document.getElementById("cite-copy-btn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(modalText.textContent);
+        copyStatus.classList.add("show");
+        setTimeout(() => copyStatus.classList.remove("show"), 1800);
+      } catch (err) {
+        // Fallback selection
+        const range = document.createRange();
+        range.selectNode(modalText);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+
+    // Replace each "Scholar" pill with a "Cited by N" link to the exact
+    // Google Scholar cluster when we have data; fall back to the search
+    // link for un-indexed papers.
+    document.querySelectorAll(".pub").forEach((pub) => {
+      const cite = pub.querySelector(".cite-btn");
+      if (!cite) return;
+      const key = cite.dataset.key;
+      const count = CITATIONS[key];
+      const cluster = SCHOLAR_CITES[key];
+      const scholarLink = Array.from(pub.querySelectorAll(".pub-links a"))
+        .find(a => a.textContent.trim() === "Scholar");
+      if (!scholarLink) return;
+      if (typeof count === "number") {
+        scholarLink.innerHTML = `Cited by <span class="cite-count">${count}</span>`;
+        if (cluster) scholarLink.href = cluster;
+      }
+    });
   </script>
 </body>
 </html>
