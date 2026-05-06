@@ -198,6 +198,48 @@
     .badge.rate { background: var(--accent-soft); color: var(--accent-strong); }
     .badge.first { background: #eef5ee; color: #2d5a32; }
 
+    /* Publication link buttons */
+    .pub-links {
+      margin-top: .5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      font-family: "Inter", sans-serif;
+      font-size: .78rem;
+    }
+    .pub-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      padding: .2rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      background: var(--surface);
+      transition: border-color .15s, color .15s, background .15s, transform .15s;
+      letter-spacing: 0.02em;
+    }
+    .pub-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+    .pub-links a.primary {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .pub-links a.primary:hover { background: var(--accent); color: #fff; }
+    .pub-links a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .55;
+    }
+
     /* Awards / Education */
     .list-block { display: grid; gap: .55rem; font-family: "Inter", sans-serif; font-size: .95rem; }
     .list-block .row { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; align-items: baseline; }
@@ -335,7 +377,7 @@
     <section id="publications">
       <h2>Publications</h2>
       <p style="font-family:'Inter',sans-serif; font-size:.88rem; color:var(--text-faint); margin-top:-.4rem; margin-bottom:1rem;">
-        <strong style="color:var(--text-muted);">Bold</strong> author names indicate me; <span class="badge first">First author</span> tags mark first-author works.
+        <strong style="color:var(--text-muted);">Bold</strong> author names indicate me; <span class="badge first">First author</span> tags mark first-author works. Each entry links to the <strong style="color:var(--text-muted);">Paper</strong>, <em>Slides</em>, conference video, and indexed venue (ACM&nbsp;DL / IEEE&nbsp;Xplore) where available.
       </p>
 
       <div class="pub-year">2025</div>
@@ -344,24 +386,40 @@
         <span class="title">Large Language Models for Serverless Function Generation: An Investigation on FaaS Performance</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">11th International Workshop on Serverless Computing (WOSC&nbsp;2025) — Dec&nbsp;2025</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/WoSC11_2025_ServerlessLLM.pdf" target="_blank" rel="noopener">Paper</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Sky Computing for Serverless: Infrastructure Assessment to Support Performance Enhancement <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Chen, X., Hung, L.H., Lloyd, W.</span>
-        <span class="venue">18th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2025) — Dec&nbsp;2025</span>
+        <span class="venue">18th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2025) — Dec&nbsp;2025 <span class="badge rate">Acc. 31%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/Cordingly_CPU_Distribution_Manipulation_UCC2025-cr.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://dl.acm.org/doi/10.1145/3773274.3774266" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Distributed FaaSRunner: Enabling Reproducible Multi-node, Multi-threaded Function-as-a-Service Endpoint Testing</span>
         <span class="authors">Kondo, T., Bomhold, A., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
         <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025 <span class="badge rate">Acc. 40.8%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/DistFaaSRunner-camera-ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/DistributedFaaSRunnerIC2ESlides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://ieeexplore.ieee.org/document/11196324/" target="_blank" rel="noopener">IEEE Xplore</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">GraphQL vs. REST: Investigating Performance and Scalability for Serverless Database Abstraction</span>
         <span class="authors">Jin, R., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
         <span class="venue">13th IEEE International Conference on Cloud Engineering (IC2E&nbsp;2025) — Sep&nbsp;2025 <span class="badge rate">Acc. 40.8%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/graphql-camera-ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/graphql-ic2e-slides.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub-year">2024</div>
@@ -370,18 +428,32 @@
         <span class="title">Predicting ARM64 Serverless Function Runtime: Leveraging Function Profiling for Generalized Performance Models</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">17th IEEE/ACM International Conference on Utility and Cloud Computing (UCC&nbsp;2024) — Dec&nbsp;2024 <span class="badge rate">Acc. 35%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/ucc-2024-camera-ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/ucc-2024-slides.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">GraphQL vs. REST: A Performance and Cost Investigation for Serverless Applications</span>
         <span class="authors">Jin, R., <strong>Cordingly, R.</strong>, Zhao, D., Lloyd, W.</span>
         <span class="venue">10th International Workshop on Serverless Computing (WOSC&nbsp;2024) — Dec&nbsp;2024</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/wosc2024-final73.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/wosc2024-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://dl.acm.org/doi/10.1145/3702634.3702956" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Towards Low-Cost Global Highly Available Large Container-Based Serverless Functions <span class="badge best">Best Paper</span></span>
         <span class="authors">Kaur, J., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">2024 IEEE Cloud Summit, pp.&nbsp;7–12 — Jun&nbsp;2024</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/IEEECloudSummit_JasleenKaur-cameraready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/2024-cloud-summit-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://ieeexplore.ieee.org/document/10630900/" target="_blank" rel="noopener">IEEE Xplore</a>
+        </div>
       </div>
 
       <div class="pub-year">2023</div>
@@ -390,30 +462,52 @@
         <span class="title">Towards Serverless Sky Computing: An Investigation on Global Workload Distribution to Mitigate Carbon Intensity, Network Latency, and Cost <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Kaur, J., Dwivedi, D., Lloyd, W.</span>
         <span class="venue">2023 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2023), pp.&nbsp;59–69 — Sep&nbsp;2023 <span class="badge rate">Acc. 33.3%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/ic2e_2023_cordingly.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/Cordingly_IC2E2023_slides_2up.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Enabling Serverless Sky Computing <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">2023 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2023), PhD Symposium, pp.&nbsp;232–235 — Sep&nbsp;2023</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/ic2e_2023_PhD_Sym.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/cordingly_ic2e_2023_PhD_Sym-slides.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Addressing Serverless Computing Vendor Lock-In through Cloud Service Abstraction</span>
         <span class="authors">Mo, D., <strong>Cordingly, R.</strong>, Chinn, D., Lloyd, W.</span>
         <span class="venue">2023 IEEE International Conference on Cloud Computing Technology and Science (CloudCom&nbsp;2023), pp.&nbsp;193–199 — Dec&nbsp;2023</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/MoCloudCom2023proof.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/cloudcom-2023.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">X86 vs. ARM64: An Investigation of Factors Influencing Serverless Performance</span>
         <span class="authors">Chen, X., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">9th International Workshop on Serverless Computing (WOSC&nbsp;2023) — Dec&nbsp;2023</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/XinghanChen_WOSC2023_paper_camera_ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/wosc_2023_slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://dl.acm.org/doi/10.1145/3631295.3631394" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Understanding Container Isolation: An Investigation of Performance Implications of Container Runtimes</span>
-        <span class="authors">Bhaia, N., Hung, L.H., <strong>Cordingly, R.</strong>, Lloyd, W.</span>
+        <span class="authors">Bhaia, N., <strong>Cordingly, R.</strong>, Hung, L.H., Lloyd, W.</span>
         <span class="venue">9th International Workshop on Container Technologies and Container Clouds (WoC&nbsp;2023), pp.&nbsp;7–12 — Dec&nbsp;2023</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/Bhaia_ContainerIsolationPaper-cameraready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/WoC-2023-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://dl.acm.org/doi/10.1145/3631311.3632400" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub-year">2022</div>
@@ -422,18 +516,32 @@
         <span class="title">Function Memory Optimization for Heterogeneous Serverless Platforms with CPU Time Accounting <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Xu, S., Lloyd, W.</span>
         <span class="venue">2022 IEEE International Conference on Cloud Engineering (IC2E&nbsp;2022) — Sep&nbsp;2022</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/SAAF_Memory_Configuration_IC2E2022.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/ic2e2022_CPUTAMS_slides.pdf" target="_blank" rel="noopener">Slides</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">FaaSET: A Jupyter Notebook to Streamline Every Facet of Serverless Development <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">5th Workshop on Hot Topics in Cloud Computing Performance (HotCloudPerf&nbsp;2022), co-located with ICPE&nbsp;2022 — Apr&nbsp;2022</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/FaaSET-paper-final.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/HotCloudPerf_2022_FaaSET-notebook-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://youtu.be/VEF3i_XNGy0?t=8053" target="_blank" rel="noopener">Video</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Characterizing X86 and ARM Serverless Performance Variation: A Natural Language Processing Case Study</span>
         <span class="authors">Lambion, D., Schmitz, R., <strong>Cordingly, R.</strong>, Heydari, N., Lloyd, W.</span>
         <span class="venue">Companion of the 2022 ACM/SPEC International Conference on Performance Engineering (ICPE&nbsp;2022), pp.&nbsp;69–75 — Jul&nbsp;2022</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/hotcloudperf_lambda_variability_final.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/hotcloudperf_lambda_variability_slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://youtu.be/VEF3i_XNGy0?t=11356" target="_blank" rel="noopener">Video</a>
+        </div>
       </div>
 
       <div class="pub-year">2021</div>
@@ -442,12 +550,23 @@
         <span class="title">Implications of Alternative Serverless Application Control Flow Methods</span>
         <span class="authors">Quinn, S., <strong>Cordingly, R.</strong>, Lloyd, W.</span>
         <span class="venue">7th International Workshop on Serverless Computing (WoSC&nbsp;2021), pp.&nbsp;17–22 — Dec&nbsp;2021</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/SterlingQuinn.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/WOSC7-slides-p3.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://www.youtube.com/watch?v=Xt0ltISAXJY" target="_blank" rel="noopener">Video</a>
+          <a href="https://dl.acm.org/doi/abs/10.1145/3493651.3493668" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Enhancing Observability of Serverless Computing with the Serverless Application Analytics Framework <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Heydari, N., Yu, H., Hoang, V., Sadeghi, Z., Lloyd, W.</span>
         <span class="venue">Companion of the ACM/SPEC International Conference on Performance Engineering (ICPE&nbsp;2021), Tutorial Paper, pp.&nbsp;161–164 — Apr&nbsp;2021</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/ICPE_SAAF_proof.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/SAAF_Tutorial_Slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://github.com/wlloyduw/SAAF/blob/master/tutorial" target="_blank" rel="noopener">Tutorial</a>
+        </div>
       </div>
 
       <div class="pub-year">2020</div>
@@ -456,18 +575,38 @@
         <span class="title">The Serverless Application Analytics Framework: Enabling Design Trade-off Evaluation for Serverless Software <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Yu, H., Hoang, V., Sadeghi, Z., Foster, D., Perez, D., Hatchett, R., Lloyd, W.</span>
         <span class="venue">6th International Workshop on Serverless Computing (WoSC&nbsp;2020), pp.&nbsp;67–72 — Dec&nbsp;2020</span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/SAAF-Paper24.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/SAAF-WOSC-slides.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://www.youtube.com/watch?v=oRDkHdapmg4" target="_blank" rel="noopener">Talk</a>
+          <a href="https://youtu.be/479BnWGp2E4" target="_blank" rel="noopener">Demo</a>
+          <a href="https://youtu.be/i_s91P72pRE" target="_blank" rel="noopener">Lightning</a>
+          <a href="https://dl.acm.org/doi/abs/10.1145/3429880.3430103" target="_blank" rel="noopener">ACM DL</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Predicting Performance and Cost of Serverless Computing Functions with SAAF <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Shu, W., Lloyd, W.J.</span>
         <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, pp.&nbsp;640–649 — Aug&nbsp;2020 <span class="badge rate">Acc. 27%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/saaf_cbdcom_camera_ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/SAAF_slides-2-Up.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://drive.google.com/file/d/1YrcrkpKskCltJLJ8gdEGlH_XbutAUjnW/view?usp=sharing" target="_blank" rel="noopener">Video</a>
+          <a href="https://ieeexplore.ieee.org/document/9251165/" target="_blank" rel="noopener">IEEE Xplore</a>
+        </div>
       </div>
 
       <div class="pub">
         <span class="title">Implications of Programming Language Selection for Serverless Data Processing Pipelines <span class="badge first">First author</span></span>
         <span class="authors"><strong>Cordingly, R.</strong>, Yu, H., Hoang, V., Perez, D., Foster, D., Sadeghi, Z., Hatchett, R., Lloyd, W.J.</span>
         <span class="venue">DASC/PiCom/CBDCom/CyberSciTech&nbsp;2020, Short Paper, pp.&nbsp;704–711 — Aug&nbsp;2020 <span class="badge rate">Acc. 40%</span></span>
+        <div class="pub-links">
+          <a class="primary" href="https://faculty.washington.edu/wlloyd/papers/cbdcom_FaaSProgrammingLanguagePaper_camera_ready.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://faculty.washington.edu/wlloyd/slides/Lang-slides-2-Up.pdf" target="_blank" rel="noopener">Slides</a>
+          <a href="https://drive.google.com/file/d/1C1Vau613ehXrctcRSqxVrAwP2WurEG4w/view?usp=sharing" target="_blank" rel="noopener">Video</a>
+          <a href="https://ieeexplore.ieee.org/document/9251194/" target="_blank" rel="noopener">IEEE Xplore</a>
+        </div>
       </div>
     </section>
 
