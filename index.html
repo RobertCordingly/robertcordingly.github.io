@@ -149,6 +149,16 @@
       color: var(--accent);
     }
 
+    /* General exam abstract */
+    .abstract {
+      padding: 1.2rem 1.4rem;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .abstract p { font-size: .97rem; }
+
     /* Publications */
     .pub-year {
       font-family: "Inter", sans-serif;
@@ -404,6 +414,7 @@
   <main class="wrap">
     <nav class="top">
       <a href="#about">About</a>
+      <a href="#general-exam">General Exam</a>
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
@@ -453,6 +464,37 @@
         I completed my <strong>M.S.</strong> (2020) and <strong>B.S.</strong> (2018,
         <em>Cum Laude</em>) in Computer Science &amp; Systems at UW Tacoma.
       </p>
+    </section>
+
+    <section id="general-exam">
+      <h2>General Exam Abstract</h2>
+      <div class="abstract">
+        <p>
+          Serverless Function-as-a-Service (FaaS) platforms allow developers to deploy applications as functions
+          that are automatically managed and scaled, and that are billed only for the memory and execution time
+          each request consumes. FaaS platforms can host small, infrequently used applications for practically no
+          cost while also scaling to thousands of concurrent instances for massively parallel workloads. However,
+          developers must still choose which cloud provider, which regions, and which function configurations
+          (e.g., memory reservation size) to deploy to, and each choice has performance, cost, and carbon
+          consequences that are difficult to predict. FaaS platforms obfuscate their underlying infrastructure and
+          bill at millisecond granularity, leaving developers to make ad hoc decisions and often to learn the true
+          cost of a workload only after receiving the bill.
+        </p>
+        <p>
+          To address these challenges, we propose serverless sky computing: a paradigm that aggregates serverless
+          resources across cloud providers, cloud regions, and function configurations, and routes each request to
+          the deployment that best satisfies its objectives for response time, hosting cost, and carbon footprint.
+          FaaS platforms charge nothing for idle deployments, so an application can be replicated across hundreds
+          of regions and configurations at no additional cost, making the routing decision the primary lever for
+          optimization. Our completed work built the sky mesh, a deployment of over 1,400 functions spanning AWS
+          Lambda, Google Cloud, IBM Code Engine, and DigitalOcean Functions, and demonstrated that aggregation-aware
+          routing reduces the carbon intensity of a globally distributed application by up to 99.8%, network
+          latency by 65%, and hosting costs by 58%, with an additional 18.2% cost savings from exploiting hidden
+          hardware heterogeneity across regions. This proposal presents our research questions on (1) serverless
+          resource aggregation, (2) aggregation strategy trade-offs, (3) platform-neutral abstractions,
+          (4) autonomously learned routing policies, and (5) extending the sky to agentic AI workloads.
+        </p>
+      </div>
     </section>
 
     <section id="research">
